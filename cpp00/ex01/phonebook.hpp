@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:17:38 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/03 16:16:33 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/04 15:23:23 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 #include "contact.hpp"
 #include <iostream>
+#include <iomanip>
 
 // class
 class PhoneBook {
 	private:
 		Contact _contacts[8];
-		int _count_contact;
 		int _index;
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
 		void AddContact(void);
-		void SearchContact(void) const;
-		int GetCount() const;
+		void SearchContact(void);
+		Contact get_contact(int index);
 };
 
 // function

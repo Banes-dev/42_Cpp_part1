@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:17:38 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/03 15:06:25 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/04 13:12:12 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 #include <iostream>
+#include <iomanip>
 
 // class
 class Contact {

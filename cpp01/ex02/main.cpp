@@ -5,28 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 14:44:06 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/09 16:14:50 by ehay             ###   ########.fr       */
+/*   Created: 2024/09/06 12:47:57 by ehay              #+#    #+#             */
+/*   Updated: 2024/09/09 13:25:51 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
-#include "contact.hpp"
+#include <iostream>
 
 int main(void)
 {
-	PhoneBook instance;
-	std::string command;
+	std::string str = "HI THIS IS BRAIN";
+	std::string *str_ptr = &str;
+	std::string &str_ref = str;
 
-	while (true)
-	{
-		std::getline(std::cin, command);
-		if (command == "ADD")
-			instance.AddContact();
-		if (command == "SEARCH")
-			instance.SearchContact();
-		if (command == "EXIT")
-			break;
-	}
-    return (0);
+	std::cout << std::endl << "Adress :" << std::endl;
+	std::cout << &str << std::endl;
+	std::cout << &str_ptr << std::endl;
+	std::cout << &str_ref << std::endl;
+
+	std::cout << std::endl << "Value :" << std::endl;
+	std::cout << str << std::endl;
+	std::cout << *str_ptr << std::endl;
+	std::cout << str_ref << std::endl << std::endl;
+	return (0);
 }

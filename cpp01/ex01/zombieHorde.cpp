@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 15:09:58 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/06 16:36:02 by ehay             ###   ########.fr       */
+/*   Created: 2024/09/09 12:50:31 by ehay              #+#    #+#             */
+/*   Updated: 2024/09/09 13:06:41 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 
 Zombie* zombieHorde(int N, std::string name)
 {
-	// if (N < 1)
-	// {
-	// 	std::cout << "\033[31m" << "The horde cannot be less than 1" << "\033[0m" << std::endl;
-	// 	return (NULL);
-	// }
-	Zombie *horde = new Zombie[N];
-	// if (z == NULL)
-	// {
-	// 	std::cout << "\033[31m" << "The allocation has failed" << "\033[0m" << std::endl;
-	// 	return (NULL);
-	// }
-	int i = 0;
-	while (i <= N)
+	if (N < 1)
 	{
-		horde[i].SetName(name);
+		std::cout << "Not enought zombie for create a horde" << std::endl;
+		return (NULL);
+	}
+	Zombie *z = new Zombie[N];
+	int i = 0;
+	while (i < N)
+	{
+		z[i].SetName(name);
 		i++;
 	}
-	return (horde);
+	return (z);
 }

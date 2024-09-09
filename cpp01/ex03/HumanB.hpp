@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 12:49:15 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/09 12:50:16 by ehay             ###   ########.fr       */
+/*   Created: 2024/09/09 13:33:50 by ehay              #+#    #+#             */
+/*   Updated: 2024/09/09 15:50:49 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#pragma once
 
+#include "Weapon.hpp"
 #include <iostream>
 
-class Zombie
+class HumanB
 {
-	private:
-		std::string _name;
-	public:
-		Zombie(void);
-		~Zombie(void);
+    private:
+        std::string _name;
+        Weapon* _weapon;
+    public:
+        HumanB(std::string recup_name);
+        ~HumanB(void);
 
-		void announce(void);
-		std::string GetName(void);
-		void SetName(std::string name);
+        void Attack(void);
+        void SetWeapon(Weapon& weapon);
 };
-
-Zombie* zombieHorde(int N, std::string name);
-
-#endif

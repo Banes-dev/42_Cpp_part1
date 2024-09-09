@@ -5,28 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 14:44:06 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/09 16:14:50 by ehay             ###   ########.fr       */
+/*   Created: 2024/09/06 12:47:57 by ehay              #+#    #+#             */
+/*   Updated: 2024/09/09 15:48:50 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
-#include "contact.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main(void)
 {
-	PhoneBook instance;
-	std::string command;
-
-	while (true)
 	{
-		std::getline(std::cin, command);
-		if (command == "ADD")
-			instance.AddContact();
-		if (command == "SEARCH")
-			instance.SearchContact();
-		if (command == "EXIT")
-			break;
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.Attack();
+		club.SetType("some other type of club");
+		bob.Attack();
 	}
-    return (0);
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.SetWeapon(club);
+		jim.Attack();
+		club.SetType("some other type of club");
+		jim.Attack();
+	}
+	return (0);
 }

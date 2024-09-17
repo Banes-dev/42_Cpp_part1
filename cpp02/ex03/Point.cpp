@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/16 16:20:19 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/17 13:03:01 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Fixed const Point::GetX(void) const
 	return (this->_x);
 }
 
-Fixed const Point::GetX(void) const
+Fixed const Point::GetY(void) const
 {
 	return (this->_y);
 }

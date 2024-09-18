@@ -6,12 +6,14 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/18 13:39:17 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/18 16:06:08 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
@@ -19,6 +21,8 @@ int main(void)
 	ClapTrap jim("Jim");
 	ClapTrap joe("Joe");
 	ScavTrap yep("yep");
+	FragTrap jaj("jaj");
+	DiamondTrap mario("mario");
 
 	john.attack("Marge");
 	john.attack("Bart");
@@ -32,4 +36,15 @@ int main(void)
 	yep.takeDamage(99);
 	yep.beRepaired(50);
 	yep.guardGate();
+	jaj.attack("Maggie");
+	jaj.takeDamage(99);
+	jaj.beRepaired(50);
+	jaj.highFivesGuys();
+	std::cout << std::endl;
+	mario.attack("Bowser");
+	mario.takeDamage(5);
+	mario.beRepaired(3);
+	mario.guardGate();
+	mario.highFivesGuys();
+	mario.whoAmI();
 }

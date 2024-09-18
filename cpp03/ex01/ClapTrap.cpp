@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/17 16:07:06 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/18 14:43:12 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hp + amount > 10)
-		this->_hp = 10;
-	else
-		this->_hp = this->_hp + amount;
+	// if (this->_hp + amount > 10)
+	// 	this->_hp = 10;
+	// else
+	this->_hp = this->_hp + amount;
 	std::cout << "ClapTrap " << this->_name << " has repaired " << amount << " hp, " << this->_hp << " hp remaining" << std::endl;
 }

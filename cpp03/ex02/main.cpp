@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/18 13:53:33 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/18 14:41:33 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-#include <iostream>
-
-class ClapTrap
+int main(void)
 {
-	protected:
-		std::string _name;
-		unsigned int _hp;
-		unsigned int _energy;
-		unsigned int _attack_dmg;
-	public:
-		ClapTrap(std::string recup_name);
-		ClapTrap(const ClapTrap &copy);
-		ClapTrap& operator=(const ClapTrap &copy);
-		~ClapTrap(void);
+	ClapTrap john("John");
+	ClapTrap jim("Jim");
+	ClapTrap joe("Joe");
+	ScavTrap yep("yep");
+	FragTrap jaj("jaj");
 
-		// Other function
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-};
+	john.attack("Marge");
+	john.attack("Bart");
+	john.attack("Homer");
+	john.takeDamage(5);
+	jim.takeDamage(9);
+	jim.takeDamage(10);
+	joe.beRepaired(10);
+	joe.takeDamage(19);
+	yep.attack("Lisa");
+	yep.takeDamage(99);
+	yep.beRepaired(50);
+	yep.guardGate();
+	jaj.attack("Maggie");
+	jaj.takeDamage(99);
+	jaj.beRepaired(50);
+	jaj.highFivesGuys();
+}

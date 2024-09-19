@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/18 13:57:49 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/19 12:53:47 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 		FragTrap(std::string recup_name);

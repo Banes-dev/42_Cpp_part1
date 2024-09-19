@@ -6,22 +6,22 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/18 16:11:19 by ehay             ###   ########.fr       */
+/*   Updated: 2024/09/19 13:07:10 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 // Construtor etc
-DiamondTrap::DiamondTrap(std::string recup_name) : ClapTrap(recup_name + "_clap_name"), ScavTrap(), FragTrap(), _name(recup_name)
+DiamondTrap::DiamondTrap(std::string recup_name) : ClapTrap(recup_name + "_clap_name"), ScavTrap("default"), FragTrap("default"), _name(recup_name)
 {
 	std::cout << "DiamondTrap " << recup_name << " constructor called" << std::endl;
 	this->FragTrap::_hp = 100;
-	this->ScavTrap::_ep = 50;
-	this->FragTrap::_ad = 30;
+	this->ScavTrap::_energy = 50;
+	this->FragTrap::_attack_dmg = 30;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), ScavTrap("default"), FragTrap("default")
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
@@ -30,8 +30,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	ClapTrap::operator=(copy);
-	ScavTrap();
-	FragTrap();
+	ScavTrap("default");
+	FragTrap("default");
 	return (*this);
 }
 

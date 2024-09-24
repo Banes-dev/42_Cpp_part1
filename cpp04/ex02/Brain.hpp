@@ -1,0 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
+/*   Updated: 2024/09/24 15:01:51 by ehay             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+
+#include <iostream>
+
+class Brain
+{
+	private:
+		std::string _ideas[100];
+	public:
+		Brain(void);
+		Brain(const Brain &copy);
+		Brain& operator=(const Brain &copy);
+		~Brain(void);
+
+		// Other function
+		const std::string& GetIdea(int index) const;
+};

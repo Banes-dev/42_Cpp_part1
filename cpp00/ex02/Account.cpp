@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:04:33 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/04 16:29:27 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/02 16:17:14 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ void Account::displayStatus(void) const
 
 void Account::_displayTimestamp(void)
 {
-	time_t	now;
+    time_t now = time(NULL);
+    struct tm *ltm = localtime(&now);
+    char buffer[20];
 
-	now = time(NULL);
-	std::cout << std::put_time(localtime(&now), "[%Y%m%d_%H%M%S] ");
+    strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", ltm);
+    std::cout << buffer;
 }

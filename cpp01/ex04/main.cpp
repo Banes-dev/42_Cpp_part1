@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:47:57 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/10 13:32:23 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/02 16:40:57 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,19 @@ int main(int argc, char **argv)
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 
-	std::ifstream ifs(file_name);
+	// check si on peut open le file
+	std::ifstream ifs;
+	ifs.open(file_name.c_str());
+	if (!ifs.good())
+	{
+		std::cout << "Error : for open the file (file not exist)" << std::endl;
+		return (1);
+	}
+	if (ifs.peek() == std::ifstream::traits_type::eof())
+	{
+		std::cout << "Error : the file is empty" << std::endl;
+		return (1);
+	}
 
 	std::string content;
 	while (ifs.good())
@@ -47,7 +59,9 @@ int main(int argc, char **argv)
 
 	ifs.close();
 
-	std::ofstream ofs(file_name + ".replace");
+	std::string file_name_rename = file_name + ".replace";
+	std::ofstream ofs;
+	ofs.open(file_name_rename.c_str());
 	ofs << content;
 	ofs.close();
 	return (0);

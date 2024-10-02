@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:47:57 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/09 15:48:50 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/02 16:22:31 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void)
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
-		jim.SetWeapon(club);
+		// jim.SetWeapon(club);
 		jim.Attack();
 		club.SetType("some other type of club");
 		jim.Attack();

@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/18 16:06:08 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/07 15:14:49 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ int main(void)
 	mario.guardGate();
 	mario.highFivesGuys();
 	mario.whoAmI();
+	std::cout << std::endl;
 }

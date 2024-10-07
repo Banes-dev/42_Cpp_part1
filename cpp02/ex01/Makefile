@@ -5,7 +5,7 @@ CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 # Normal
 NAME = FirstCanon_advanced
 FUNC = main.cpp Fixed.cpp
-OBJS = ${FUNC:.cpp=.o}
+OBJS = $(FUNC:.cpp=.o)
 
 
 # Compil
@@ -13,6 +13,9 @@ all: 	${NAME}
 
 ${NAME}: ${OBJS}
 	${COMP} ${CFLAGS} ${OBJS} -o ${NAME}
+
+%.o: %.cpp
+	${COMP} ${CFLAGS} -c $< -o $@
 
 clean:	
 	rm -f ${OBJS}

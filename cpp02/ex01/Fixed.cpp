@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/12 15:10:06 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/07 13:57:30 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ Fixed::Fixed(float const nb)
 Fixed::Fixed(const Fixed &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_entier = copy.getRawBits();
-	// *this = copy;
+	// this->_entier = copy.getRawBits();
+	*this = copy;
 }
 
 Fixed &Fixed::operator=(const Fixed &copy)

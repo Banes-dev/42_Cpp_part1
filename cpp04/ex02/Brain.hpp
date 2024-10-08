@@ -6,13 +6,14 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/09/24 15:01:51 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/08 16:13:14 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <cstdlib> // rand()
 
 class Brain
 {

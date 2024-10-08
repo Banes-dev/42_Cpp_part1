@@ -5,7 +5,7 @@ CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 # Normal
 NAME = Polymorphisme
 FUNC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
-OBJS = ${FUNC:.cpp=.o}
+OBJS = $(FUNC:.cpp=.o)
 
 
 # Compil
@@ -13,6 +13,9 @@ all: 	${NAME}
 
 ${NAME}: ${OBJS}
 	${COMP} ${CFLAGS} ${OBJS} -o ${NAME}
+
+%.o: %.cpp
+	${COMP} ${CFLAGS} -c $< -o $@
 
 clean:	
 	rm -f ${OBJS}

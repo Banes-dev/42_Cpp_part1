@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/15 14:03:23 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/15 15:18:45 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,20 @@
 
 #include <iostream>
 
-class Cure : public AMateria
+class Character : public ICharacter
 {
+	protected:
+		std::string _name;
+		AMateria* _inventory[4];
 	public:
-		Cure(void);
-		Cure(const Cure &copy);
-		Cure& operator=(const Cure &copy);
-		~Cure(void);
+		Character(std::string recup_name);
+		Character(const Character &copy);
+		Character& operator=(const Character &copy);
+		~Character(void);
 
 		// other function
-		Cure* clone() const;
-		void use(ICharacter& target);
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };

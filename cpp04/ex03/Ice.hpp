@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/10 15:55:55 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/15 14:03:30 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 #include <iostream>
 
-class Ice
+class Ice : public AMateria
 {
-	protected:
-		std::string _type;
 	public:
-		Ice(std::string const & type);
+		Ice(void);
 		Ice(const Ice &copy);
 		Ice& operator=(const Ice &copy);
 		~Ice(void);
 
 		// other function
-		std::string const & getType() const; //Returns the materia type
-
-		// interface function
-		Ice* clone() const = 0;
+		Ice* clone() const;
 		void use(ICharacter& target);
 };

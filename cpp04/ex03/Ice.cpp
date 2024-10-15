@@ -6,37 +6,48 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/10 15:37:44 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/15 14:13:53 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
 // Construtor etc
-Ice::Ice(const std::string recup_type) : _type(recup_type)
+Ice::Ice() : AMateria("ice")
 {
-	std::cout << "Ice " << recup_type << " constructor called" << std::endl;
+	std::cout << "Ice constructor called" << std::endl;
 }
 
-Ice::Ice(const Ice &copy) : _type(copy._type)
+Ice::Ice(const Ice &copy) : AMateria(copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Ice copy constructor called" << std::endl;
 }
 
-Ice &Ice::operator=(const Ice &copy)
+Ice& Ice::operator=(const Ice &copy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
-	this->_type = copy._type;
+	if (copy._type != "ice")
+	{
+		std::cout << "Sth wrong in Ice Assignation operator called" << std::endl;
+		return (*this);
+	}
+	std::cout << "Ice copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 Ice::~Ice(void)
 {
-	std::cout << "Ice " << this->_type << " Destructor called" << std::endl;
+	std::cout << "Ice Destructor called" << std::endl;
 }
 
 // Other function
-std::string const & Ice::getType() const  //Returns the materia type
+Ice* Ice::clone() const
 {
-	return (this->_type);
+	Ice *new_ice = new Ice();
+	std::cout << "Ice clone has created" << std::endl;
+	return (new_ice);
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.GetName() << " *" << std::endl;
 }

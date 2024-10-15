@@ -6,37 +6,49 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/10 15:37:27 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/15 14:13:30 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
 // Construtor etc
-Cure::Cure(const std::string recup_type) : _type(recup_type)
+Cure::Cure() : AMateria("cure")
 {
-	std::cout << "Cure " << recup_type << " constructor called" << std::endl;
+	std::cout << "Cure constructor called" << std::endl;
 }
 
-Cure::Cure(const Cure &copy) : _type(copy._type)
+Cure::Cure(const Cure &copy) : AMateria(copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Cure copy constructor called" << std::endl;
 }
 
-Cure &Cure::operator=(const Cure &copy)
+Cure& Cure::operator=(const Cure &copy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
-	this->_type = copy._type;
+	if (copy._type != "cure")
+	{
+		std::cout << "Sth wrong in Cure Assignation operator called" << std::endl;
+		return (*this);
+	}
+	std::cout << "Cure copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 Cure::~Cure(void)
 {
-	std::cout << "Cure " << this->_type << " Destructor called" << std::endl;
+	std::cout << "Cure Destructor called" << std::endl;
 }
 
 // Other function
-std::string const & Cure::getType() const  //Returns the materia type
+Cure* Cure::clone() const
 {
-	return (this->_type);
+	Cure *new_cure = new Cure();
+	std::cout << "Cure clone has created" << std::endl;
+	return (new_cure);
 }
+
+void Cure::use(ICharacter& target)
+{
+	std::cout << "* heals " << target.GetName() << "’s wounds *" << std::endl;
+}
+

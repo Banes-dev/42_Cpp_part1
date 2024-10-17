@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/15 14:13:53 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/17 14:10:05 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ Ice::Ice(const Ice &copy) : AMateria(copy)
 
 Ice& Ice::operator=(const Ice &copy)
 {
-	if (copy._type != "ice")
-	{
-		std::cout << "Sth wrong in Ice Assignation operator called" << std::endl;
-		return (*this);
-	}
 	std::cout << "Ice copy assignment operator called" << std::endl;
+	if (this != &copy) {
+		AMateria::operator=(copy);
+	}
 	return (*this);
 }
 
@@ -40,14 +38,14 @@ Ice::~Ice(void)
 }
 
 // Other function
-Ice* Ice::clone() const
+AMateria* Ice::clone() const
 {
-	Ice *new_ice = new Ice();
+	AMateria *new_ice = new Ice(*this);
 	std::cout << "Ice clone has created" << std::endl;
 	return (new_ice);
 }
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.GetName() << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

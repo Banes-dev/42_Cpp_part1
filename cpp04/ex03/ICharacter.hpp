@@ -6,13 +6,16 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/15 15:02:29 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/16 13:21:26 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

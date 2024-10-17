@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/15 14:13:30 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/17 14:10:28 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@ Cure::Cure(const Cure &copy) : AMateria(copy)
 
 Cure& Cure::operator=(const Cure &copy)
 {
-	if (copy._type != "cure")
-	{
-		std::cout << "Sth wrong in Cure Assignation operator called" << std::endl;
-		return (*this);
-	}
 	std::cout << "Cure copy assignment operator called" << std::endl;
+	if (this != &copy)
+		AMateria::operator=(copy);
 	return (*this);
 }
 
@@ -40,15 +37,15 @@ Cure::~Cure(void)
 }
 
 // Other function
-Cure* Cure::clone() const
+AMateria* Cure::clone() const
 {
-	Cure *new_cure = new Cure();
+	AMateria *new_cure = new Cure(*this);
 	std::cout << "Cure clone has created" << std::endl;
 	return (new_cure);
 }
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.GetName() << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
 

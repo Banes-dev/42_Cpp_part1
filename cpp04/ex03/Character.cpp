@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/15 16:16:00 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/17 16:14:21 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ Character::Character(std::string recup_name) : _name(recup_name)
 	{
 		this->_inventory[i] = NULL;
 		i++;
+	}
+	int i_ground = 0;
+	while (i_ground < 1000)
+	{
+		this->_ground[i_ground] = NULL;
+		i_ground++;
 	}
 	std::cout << "Character " << recup_name << " constructor called" << std::endl;
 }
@@ -35,6 +41,15 @@ Character::Character(const Character &copy) : _name(copy._name)
 			this->_inventory[i] = NULL;
 		i++;
 	}
+	int i_ground = 0;
+	while (i_ground < 1000)
+	{
+		if (copy._ground[i_ground] != NULL)
+			this->_ground[i_ground] = copy._ground[i_ground]->clone();
+		else
+			this->_ground[i_ground] = NULL;
+		i_ground++;
+	}
 	std::cout << "Character " << copy._name << " copy constructor called" << std::endl;
 }
 
@@ -47,12 +62,29 @@ Character& Character::operator=(const Character &copy)
 		while (i < 4)
 		{
 			if (this->_inventory[i] != NULL)
+			{
 				delete this->_inventory[i];
-			if (copy._inventory != NULL)
-				this->_inventory = copy._inventory[i]->clone();
+				this->_inventory[i] = NULL;
+			}
+			if (copy._inventory[i] != NULL)
+				this->_inventory[i] = copy._inventory[i]->clone();
 			else
-				this->_inventory = NULL;
+				this->_inventory[i] = NULL;
 			i++;
+		}
+		int i_ground = 0;
+		while (i_ground < 1000)
+		{
+			if (this->_ground[i_ground] != NULL)
+			{
+				delete this->_ground[i_ground];
+				this->_ground[i_ground] = NULL;
+			}
+			if (copy._ground[i_ground] != NULL)
+				this->_ground[i_ground] = copy._ground[i_ground]->clone();
+			else
+				this->_ground[i_ground] = NULL;
+			i_ground++;
 		}
 	}
 	std::cout << "Character copy assignment operator called" << std::endl;
@@ -65,19 +97,32 @@ Character::~Character(void)
 	while (i < 4)
 	{
 		if (this->_inventory[i] != NULL)
+		{
 			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
 		i++;
+	}
+	int i_ground = 0;
+	while (i_ground < 1000)
+	{
+		if (this->_ground[i_ground] != NULL)
+        {
+            delete this->_ground[i_ground];
+            this->_ground[i_ground] = NULL;
+        }
+		i_ground++;
 	}
 	std::cout << "Character " << this->_name << " Destructor called" << std::endl;
 }
 
 // Other function
-std::string const& getName(void) const
+std::string const& Character::getName(void) const
 {
-	
+	return (this->_name);
 }
 
-void equip(AMateria* m)
+void Character::equip(AMateria* m)
 {
 	int i = 0;
 	while(i < 4)
@@ -91,26 +136,45 @@ void equip(AMateria* m)
 	}
 }
 
-void unequip(int idx)
+void Character::unequip(int idx)
 {
-	if (idx < 1 || idx > 4)
+	if (idx < 0 || idx > 3)
 	{
 		std::cout << "The number must be beetween 1 and 4" << std::endl;
 		return ;
 	}
-	idx = idx - 1;
 	if (this->_inventory[idx] != NULL)
 	{
-		std::cout << this->_name << "drop the " << this->_inventory[i]->getType() << " AMateria on the floor" << std::endl;
-		// drop au sol le materia;
-		this->_inventory[i] = NULL;
+		std::cout << this->_name << " drop the " << this->_inventory[idx]->getType() << " AMateria on the floor" << std::endl;
+		int i = 0;
+		while (i < 1000)
+		{
+			if (this->_ground[i] == NULL)
+			{
+				this->_ground[i] = this->_inventory[idx];
+				break;
+			}
+			i++;
+		}
+		this->_inventory[idx] = NULL;
 	}
 	else
-		std::cout << this->_name << "have not AMateria at this place of inventory" << std::endl;
+		std::cout << this->_name << " have not AMateria at this place of inventory" << std::endl;
 }
 
-void use(int idx, ICharacter& target)
+void Character::use(int idx, ICharacter& target)
 {
-	
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "The number must be beetween 1 and 4" << std::endl;
+		return ;
+	}
+	if (this->_inventory[idx] != NULL)
+	{
+		std::cout << this->_name << " use " << this->_inventory[idx]->getType() << " on " << target.getName() << std::endl;
+		this->_inventory[idx]->use(target);
+	}
+	else
+		std::cout << this->_name << " have not AMateria at this place of inventory" << std::endl;
 }
 

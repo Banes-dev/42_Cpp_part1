@@ -4,7 +4,7 @@ CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 
 # Normal
 NAME =  Interface_recap
-FUNC = main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp
+FUNC = main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp MateriaSource.cpp
 OBJS = $(FUNC:.cpp=.o)
 
 

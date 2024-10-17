@@ -6,20 +6,21 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:38:32 by ehay              #+#    #+#             */
-/*   Updated: 2024/10/10 15:34:32 by ehay             ###   ########.fr       */
+/*   Updated: 2024/10/17 14:04:18 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
 // Construtor etc
-AMateria::AMateria(const std::string recup_type) : _type(recup_type)
+AMateria::AMateria(std::string const &recup_type) : _type(recup_type)
 {
 	std::cout << "AMateria " << recup_type << " constructor called" << std::endl;
 }
 
-AMateria::AMateria(const AMateria &copy) : _type(copy._type)
+AMateria::AMateria(const AMateria &copy)
 {
+	*this = copy;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -36,7 +37,13 @@ AMateria::~AMateria(void)
 }
 
 // Other function
-std::string const & AMateria::getType() const  //Returns the materia type
+std::string const & AMateria::getType(void) const
 {
 	return (this->_type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	// std::cout << "AMateria use called" << std::endl;
+	(void)target;
 }
